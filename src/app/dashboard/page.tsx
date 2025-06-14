@@ -4,47 +4,24 @@ import { useEffect, useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Brain, Calendar, TrendingUp, User, Camera } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
-import { User as SupabaseUser } from '@supabase/supabase-js'
-import { AnalysisHistory } from '@/types'
 import Link from 'next/link'
+import { AnalysisHistory } from '@/types'
 
 export default function DashboardPage() {
-  const [user, setUser] = useState<SupabaseUser | null>(null)
   const [analysisHistory, setAnalysisHistory] = useState<AnalysisHistory[]>([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    checkUser()
+    // 로그인 없이 데모 데이터 바로 로드
+    loadAnalysisHistory()
   }, [])
 
-  const checkUser = async () => {
-    try {
-      const { data: { user } } = await supabase.auth.getUser()
-      
-      if (!user) {
-        // 로그인되지 않은 경우 로그인 페이지로 리다이렉트
-        window.location.href = '/auth/login'
-        return
-      }
-
-      setUser(user)
-      // TODO: 분석 히스토리 로드 (현재는 데모 데이터)
-      loadAnalysisHistory(user.id)
-    } catch (error) {
-      console.error('Error checking user:', error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  const loadAnalysisHistory = async (userId: string) => {
-    // TODO: 실제 데이터베이스에서 히스토리 로드
-    // 현재는 데모 데이터 사용
+  const loadAnalysisHistory = async () => {
+    // 데모 데이터 사용
     const demoHistory: AnalysisHistory[] = [
       {
         id: '1',
-        user_id: userId,
+        user_id: 'demo',
         image_url: '/demo-image-1.jpg',
         result: {
           type: '테토남',
@@ -56,7 +33,7 @@ export default function DashboardPage() {
       },
       {
         id: '2',
-        user_id: userId,
+        user_id: 'demo',
         image_url: '/demo-image-2.jpg',
         result: {
           type: '에겐녀',
@@ -67,8 +44,8 @@ export default function DashboardPage() {
         created_at: new Date(Date.now() - 86400000 * 7).toISOString() // 1주일 전
       },
     ]
-    
     setAnalysisHistory(demoHistory)
+    setLoading(false)
   }
 
   const getTypeStats = () => {
@@ -109,10 +86,10 @@ export default function DashboardPage() {
         {/* 헤더 */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            안녕하세요, {user?.email}님!
+            테토-에겐 분석 기록
           </h1>
           <p className="text-xl text-gray-600">
-            당신의 테토-에겐 분석 기록을 확인해보세요
+            아래에서 분석 기록을 확인해보세요
           </p>
         </div>
 
