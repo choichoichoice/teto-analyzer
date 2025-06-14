@@ -42,37 +42,32 @@ export default function Header() {
     <header className="border-b bg-white shadow-sm">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
-          {/* 로고 */}
-          <Link href="/" className="flex items-center space-x-2">
-            <Brain className="h-8 w-8 text-purple-600" />
-            <span className="text-xl font-bold text-gray-900">테토-에겐 분석기</span>
-          </Link>
-
-          {/* 네비게이션 */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
-              className="text-gray-700 hover:text-purple-600 transition-colors font-medium"
-            >
-              홈
+          {/* 왼쪽 영역: 로고와 네비게이션 */}
+          <div className="flex items-center space-x-8">
+            <Link href="/" className="flex items-center space-x-2">
+              <Brain className="h-8 w-8 text-purple-600" />
+              <span className="text-xl font-bold text-gray-900">테토-에겐 분석기</span>
             </Link>
-            <Link 
-              href="/analyze" 
-              className="text-gray-700 hover:text-purple-600 transition-colors font-medium"
-            >
-              분석하기
-            </Link>
-            {isConfigured && user && (
+            <nav className="hidden md:flex items-center space-x-8">
               <Link 
-                href="/dashboard" 
+                href="/" 
                 className="text-gray-700 hover:text-purple-600 transition-colors font-medium"
               >
-                대시보드
+                홈
               </Link>
-            )}
-          </nav>
+              <Link 
+                href="/analyze" 
+                className="text-gray-700 hover:text-purple-600 transition-colors font-medium"
+              >
+                분석하기
+              </Link>
+            </nav>
+          </div>
 
-          {/* 사용자 메뉴 */}
+          {/* 중앙 영역: 타이틀 */}
+          {/* 중앙 영역: 타이틀 */}
+
+          {/* 오른쪽 영역: 사용자 메뉴 */}
           <div className="flex items-center space-x-4">
             {!isConfigured ? (
               <div className="text-sm text-gray-500">

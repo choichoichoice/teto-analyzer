@@ -13,7 +13,7 @@ export default function Home() {
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-              사진으로 알아보는 
+              {/* 사진으로 알아보는  */}
               <br />
               <span className="bg-gradient-to-r from-yellow-300 to-pink-300 bg-clip-text text-transparent">
                 테토-에겐 분석기
@@ -21,7 +21,7 @@ export default function Home() {
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-gray-200 leading-relaxed">
               당신의 사진을 AI가 분석하여 테토남, 테토녀, 에겐남, 에겐녀 중<br />
-              어떤 성격 유형에 가까운지 알려드립니다
+              유형에 가까운지 알려드립니다.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Button 
@@ -34,14 +34,6 @@ export default function Home() {
                   <span>지금 분석하기</span>
                   <ArrowRight className="h-5 w-5" />
                 </Link>
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                asChild
-                className="border-white text-white hover:bg-white hover:text-purple-600 text-lg px-8 py-4 h-auto"
-              >
-                <Link href="/about">서비스 소개</Link>
               </Button>
             </div>
           </div>
@@ -124,7 +116,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="border-2 border-blue-200 hover:border-blue-400 transition-colors">
               <CardHeader className="text-center">
-                <div className="text-4xl mb-2">💪</div>
+                <div className="flex justify-center mb-2">
+                  <Image src="/tetoman.png" alt="테토남" width={84} height={84} />
+                </div>
                 <CardTitle className="text-blue-600">테토남</CardTitle>
               </CardHeader>
               <CardContent>
@@ -136,7 +130,9 @@ export default function Home() {
 
             <Card className="border-2 border-pink-200 hover:border-pink-400 transition-colors">
               <CardHeader className="text-center">
-                <div className="text-4xl mb-2">👑</div>
+                <div className="flex justify-center mb-2">
+                  <Image src="/tetowoman.png" alt="테토녀" width={84} height={84} />
+                </div>
                 <CardTitle className="text-pink-600">테토녀</CardTitle>
               </CardHeader>
               <CardContent>
@@ -148,7 +144,9 @@ export default function Home() {
 
             <Card className="border-2 border-purple-200 hover:border-purple-400 transition-colors">
               <CardHeader className="text-center">
-                <div className="text-4xl mb-2">🌸</div>
+                <div className="flex justify-center mb-2">
+                  <Image src="/egenman.png" alt="에겐남" width={84} height={84} />
+                </div>
                 <CardTitle className="text-purple-600">에겐남</CardTitle>
               </CardHeader>
               <CardContent>
@@ -160,7 +158,9 @@ export default function Home() {
 
             <Card className="border-2 border-rose-200 hover:border-rose-400 transition-colors">
               <CardHeader className="text-center">
-                <div className="text-4xl mb-2">🌺</div>
+                <div className="flex justify-center mb-2">
+                  <Image src="/egenwoman.png" alt="에겐녀" width={84} height={84} />
+                </div>
                 <CardTitle className="text-rose-600">에겐녀</CardTitle>
               </CardHeader>
               <CardContent>
